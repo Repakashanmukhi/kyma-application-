@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-kyma-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-kyma-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-kyma-app
+    spec:
+      containers:
+        - name: nodejs-kyma-app
+          image: <YOUR_DOCKER_IMAGE>
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"

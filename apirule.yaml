@@ -1,0 +1,16 @@
+apiVersion: gateway.kyma-project.io/v1beta1
+kind: APIRule
+metadata:
+  name: nodejs-kyma-app
+spec:
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  host: nodejs-kyma-app
+  service:
+    name: nodejs-kyma-app
+    port: 80
+  rules:
+    - accessStrategies:
+        - handler: allow
+      methods:
+        - GET
+        - POST
